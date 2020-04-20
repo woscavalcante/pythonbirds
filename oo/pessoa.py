@@ -1,17 +1,19 @@
 class Pessoa: #Pessoa é uma classe
-    def __init__(self, nome=None, idade=39): #isto é um método especial
+    def __init__(self, *filhos, nome=None, idade=39): #isto é um método especial
         self.idade = idade
         self.nome = nome
+        self.filhos = list(filhos)
 
     def cumprimentar(self):
         return f'Olá {id(self)}'
 
 if __name__ == '__main__':
-    p = Pessoa('Carolina')
-    print(Pessoa.cumprimentar(p))
-    print(id(p))
-    print(p.cumprimentar()) #passa o objeto p implíssito
-    print(p.nome)
-    p.nome = 'Willian'
-    print(p.nome)
-    print(p.idade)
+    gustavo = Pessoa(nome='Gustavo')
+    carolina = Pessoa(gustavo, nome='Carolina')
+    print(Pessoa.cumprimentar(carolina))
+    print(id(carolina))
+    print(carolina.cumprimentar()) #passa o objeto p implíssito
+    print(carolina.nome)
+    print(carolina.idade)
+    for filho in carolina.filhos:
+        print(filho.nome)
