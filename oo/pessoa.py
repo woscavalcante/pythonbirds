@@ -17,10 +17,15 @@ class Pessoa: #Pessoa é uma classe
     def nome_e_atributos_de_classe(cls):
         return f'{cls} - olhos {cls.olhos}'
 
+class Homem(Pessoa):
+    pass
+
+class Mulher(Pessoa):
+    pass
 
 if __name__ == '__main__':
-    gustavo = Pessoa(nome='Gustavo')
-    carolina = Pessoa(gustavo, nome='Carolina')
+    gustavo = Homem(nome='Gustavo')
+    carolina = Mulher(gustavo, nome='Carolina')
     print(Pessoa.cumprimentar(carolina))
     print(id(carolina))
     print(carolina.cumprimentar()) #passa o objeto p implíssito
@@ -41,5 +46,10 @@ if __name__ == '__main__':
     print(id(Pessoa.olhos), id(carolina.olhos), id(gustavo.olhos))
     print(Pessoa.metodo_estatico(), carolina.metodo_estatico())
     print(Pessoa.nome_e_atributos_de_classe(), carolina.nome_e_atributos_de_classe())
-
-
+    pessoa = Pessoa('Anônimo')
+    print(isinstance(pessoa, Pessoa))
+    print(isinstance(pessoa, Homem))
+    print(isinstance(gustavo, Pessoa))
+    print(isinstance(gustavo, Homem))
+    print(isinstance(carolina, Pessoa))
+    print(isinstance(carolina, Mulher))
