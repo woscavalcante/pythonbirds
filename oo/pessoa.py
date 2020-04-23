@@ -7,7 +7,7 @@ class Pessoa: #Pessoa é uma classe
         self.filhos = list(filhos)
 
     def cumprimentar(self):
-        return f'Olá {id(self)}'
+        return f'Olá, meu nome é {self.nome}'
 
     @staticmethod
     def metodo_estatico():
@@ -18,16 +18,20 @@ class Pessoa: #Pessoa é uma classe
         return f'{cls} - olhos {cls.olhos}'
 
 class Homem(Pessoa):
-    pass
+    def cumprimentar(self):
+        cumprimentar_da_classe=super().cumprimentar()
+        return f'{cumprimentar_da_classe}. Aperto de mão!'
 
 class Mulher(Pessoa):
-    pass
+    def cumprimentar(self):
+        cumprimentar_da_classe=super().cumprimentar()
+        return f'{cumprimentar_da_classe}. Beijo no rosto!'
 
 class Mutante(Pessoa):
     olhos = 3 #Sobrescrita de atributos de dados
 
 if __name__ == '__main__':
-    gustavo = Mutante(nome='Gustavo')
+    gustavo = Homem(nome='Gustavo')
     carolina = Mulher(gustavo, nome='Carolina')
     print(Pessoa.cumprimentar(carolina))
     print(id(carolina))
@@ -57,4 +61,6 @@ if __name__ == '__main__':
     print(isinstance(carolina, Pessoa))
     print(isinstance(carolina, Mulher))
     print(gustavo.olhos)
+    print(carolina.cumprimentar())
+    print(gustavo.cumprimentar())
 
