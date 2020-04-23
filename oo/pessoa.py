@@ -23,8 +23,11 @@ class Homem(Pessoa):
 class Mulher(Pessoa):
     pass
 
+class Mutante(Pessoa):
+    olhos = 3 #Sobrescrita de atributos de dados
+
 if __name__ == '__main__':
-    gustavo = Homem(nome='Gustavo')
+    gustavo = Mutante(nome='Gustavo')
     carolina = Mulher(gustavo, nome='Carolina')
     print(Pessoa.cumprimentar(carolina))
     print(id(carolina))
@@ -39,7 +42,7 @@ if __name__ == '__main__':
     del carolina.olhos #inserido por último no código às 17:48
     print(carolina.__dict__)
     print(gustavo.__dict__)
-    Pessoa.olhos = 3 #Mutação(alterado) do atributo de classe.
+    #Pessoa.olhos = 3 #Mutação(alterado) do atributo de classe. Retirado na aula de sobrescrita de atributos
     print(Pessoa.olhos)
     print(carolina.olhos)
     print(gustavo.olhos)
@@ -53,3 +56,5 @@ if __name__ == '__main__':
     print(isinstance(gustavo, Homem))
     print(isinstance(carolina, Pessoa))
     print(isinstance(carolina, Mulher))
+    print(gustavo.olhos)
+
